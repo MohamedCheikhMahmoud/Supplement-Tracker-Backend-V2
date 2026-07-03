@@ -28,4 +28,12 @@ public class User {
 
     @NotBlank
     private String password;
+
+    private Integer age;
+
+    private String address;
+
+    private String city;
+
+    private String fitnessGoal;
 }

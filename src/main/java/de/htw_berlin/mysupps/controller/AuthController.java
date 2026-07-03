@@ -34,6 +34,10 @@ public class AuthController {
         response.put("id", savedUser.getId());
         response.put("username", savedUser.getUsername());
         response.put("email", savedUser.getEmail());
+        response.put("age", savedUser.getAge());
+        response.put("address", savedUser.getAddress());
+        response.put("city", savedUser.getCity());
+        response.put("fitnessGoal", savedUser.getFitnessGoal());
 
         return response;
     }
@@ -51,6 +55,10 @@ public class AuthController {
         response.put("id", user.getId());
         response.put("username", user.getUsername());
         response.put("email", user.getEmail());
+        response.put("age", user.getAge());
+        response.put("address", user.getAddress());
+        response.put("city", user.getCity());
+        response.put("fitnessGoal", user.getFitnessGoal());
 
         return response;
     }
