@@ -5,28 +5,34 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SupplementRepository extends CrudRepository<Supplement, Long> {
 
-    Iterable<Supplement> findByNameContainingIgnoreCase(String name);
+    Iterable<Supplement> findByUserId(Long userId);
 
-    Iterable<Supplement> findByCategoryIgnoreCase(String category);
+    Iterable<Supplement> findByUserIdAndNameContainingIgnoreCase(Long userId, String name);
 
-    Iterable<Supplement> findByTaken(boolean taken);
+    Iterable<Supplement> findByUserIdAndCategoryIgnoreCase(Long userId, String category);
 
-    Iterable<Supplement> findByNameContainingIgnoreCaseAndCategoryIgnoreCase(
+    Iterable<Supplement> findByUserIdAndTaken(Long userId, boolean taken);
+
+    Iterable<Supplement> findByUserIdAndNameContainingIgnoreCaseAndCategoryIgnoreCase(
+            Long userId,
             String name,
             String category
     );
 
-    Iterable<Supplement> findByNameContainingIgnoreCaseAndTaken(
+    Iterable<Supplement> findByUserIdAndNameContainingIgnoreCaseAndTaken(
+            Long userId,
             String name,
             boolean taken
     );
 
-    Iterable<Supplement> findByCategoryIgnoreCaseAndTaken(
+    Iterable<Supplement> findByUserIdAndCategoryIgnoreCaseAndTaken(
+            Long userId,
             String category,
             boolean taken
     );
 
-    Iterable<Supplement> findByNameContainingIgnoreCaseAndCategoryIgnoreCaseAndTaken(
+    Iterable<Supplement> findByUserIdAndNameContainingIgnoreCaseAndCategoryIgnoreCaseAndTaken(
+            Long userId,
             String name,
             String category,
             boolean taken

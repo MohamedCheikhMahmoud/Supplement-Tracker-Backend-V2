@@ -24,23 +24,34 @@ public class SupplementController {
         return supplementService.getAllSupplements();
     }
 
-    @GetMapping("/supplements/filter")
-    public Iterable<Supplement> filterSupplements(
+    @GetMapping("/supplements/user/{userId}")
+    public Iterable<Supplement> getSupplementsByUser(@PathVariable Long userId) {
+        return supplementService.getSupplementsByUser(userId);
+    }
+
+    @GetMapping("/supplements/user/{userId}/filter")
+    public Iterable<Supplement> filterSupplementsByUser(
+            @PathVariable Long userId,
             @RequestParam(required = false) String query,
             @RequestParam(required = false) String category,
             @RequestParam(required = false) Boolean taken
     ) {
-        return supplementService.filterSupplements(query, category, taken);
+        return supplementService.filterSupplementsByUser(userId, query, category, taken);
     }
 
-    @PostMapping("/supplements")
-    public Supplement createSupplement(@RequestBody Supplement supplement) {
-        return supplementService.saveSupplement(supplement);
+    @PostMapping("/supplements/user/{userId}")
+    public Supplement createSupplementForUser(
+            @PathVariable Long userId,
+            @RequestBody Supplement supplement
+    ) {
+        return supplementService.saveSupplementForUser(userId, supplement);
     }
 
     @PutMapping("/supplements/{id}")
-    public Supplement updateSupplement(@PathVariable Long id,
-                                       @RequestBody Supplement supplement) {
+    public Supplement updateSupplement(
+            @PathVariable Long id,
+            @RequestBody Supplement supplement
+    ) {
         return supplementService.updateSupplement(id, supplement);
     }
 
